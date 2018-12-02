@@ -1,0 +1,5 @@
+usage:
+
+build_similarity_table.py <resturant_table>
+
+restaurant_table should be a csv file contaning at least four columns: business_id, name, neighborhood, category
