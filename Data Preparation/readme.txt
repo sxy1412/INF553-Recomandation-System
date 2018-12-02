@@ -1,0 +1,11 @@
+How to run the code
+review_filter:
+$SPARK_HOME/bin/spark-submit --class reviews_filter reviews_filter.jar <business_list> <reviews_json> <reviews/ratings>
+
+splitter:
+$SPARK_HOME/bin/spark-submit --class splitter splitter.jar <review_json_file> <business_list> <U/D (U: split by input user, D: split by review dataset)> <split percentage> <input user (only when args(2)=="U")>
+
+example: $SPARK_HOME/bin/spark-submit --class splitter splitter.jar yelp_academic_dataset_review.json bunnies.txt U 0.4 hkdbckJJSJ(user id)
+
+user_dict:
+$SPARK_HOME/bin/spark-submit --class user_dict splitter.jar <business_list> <reviews_json> <tip_json> <business_list>
