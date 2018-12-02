@@ -1,0 +1,38 @@
+Data Processing Steps
+1. Paritition data by city using command line
+grep -w "\"city\":\"Las \Vegas\"" yelp_academic_dataset_business.json > Las_Vegas_business.json
+
+2. Extract needed attributes into csv file from json file
+python processBusiness.py business/Las_Vegas_business.json LV_businesses_extracted.csv business_id name neighborhood categories GoodForMeal
+
+3. Continue to split dataset, focus on business within a specific neighbor.
+command line: python get_businessid.py [neighbor]
+e.g., python get_businessid.py The\ Strip
+The script generates the following file:
+[neighbor]_resturants_meal.csv: subset of LV_resturants_meal.csv
+[neighbor]_resturant_business_id.txt: business_id column in [neighbor]_resturants_meal.csv
+[neighbor]_unlabeled_business_id.txt: business_ids of all businesses that do not have GoodForMeal attribute
+[neighbor]_labeled.csv: all businesses that has GoodForMeal attribute with two columns -- business_id and GoodForMeal
+[neighbor]_labeled_business_id.txt: business_ids of all businesses that have GoodForMeal attribute; in other word, business_id column in [neighbor]_labeled.csv
+
+4. Convert [neighbor]_labeled.csv into csv file and add a column called mealtype_label for further classification
+command line: python mealtype_csv.py [neighbor]
+e.g., python mealtype_csv.py The\ Strip
+output: [neighbor]_mealtype.csv
+	
+5. Partition checkin data by neighbor into labeled and unlabeled
+python fliter_check_in_01.py [txt file contains only business_id] [output file]
+e.g., python fliter_check_in_01.py The_Strip_labeled_business_id.txt The_Strip_labeled_checkin.csv
+
+6. Partition checkin data by day
+command line: python partition_checkin_by_date.py [day] [neighbor]
+e.g., python partition_checkin_by_date.py Sun The\ Strip
+
+7. Using notebook to display classification
+
+8. Reformat the predict result
+python convert_mealtype_to_goodformeal.py predicted_result.csv
+
+9. Merge all known GoodForMeal and predicted GoodForMeal to get The_Strip_GoodForMeal.csv
+
+
