@@ -1,0 +1,5 @@
+usage:  build_user_similarity.py <rating_table> <user_list>  
+
+restaurant_table should be a csv file containing at three columns: user_id, business_id, rating  
+
+user_list is a text file containing a list of users, one user id per row
