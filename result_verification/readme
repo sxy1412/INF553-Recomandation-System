@@ -1,0 +1,9 @@
+usage:
+
+verify.py <rating_table> <dict> <threshold>
+
+Rating_table is a csv file containing three columns: user id, business id and rating
+
+Dict is a text file, each line start with a business id, followed by a set of user id who has visited that business
+
+Threshold is a number, all businesses with predicted rating that higher than threshold will be recommanded to user
