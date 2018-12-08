@@ -1,1 +1,9 @@
 This is a README file for the this folder
+
+1. Recommend_by_User
+  This script recommend resturants to the input user.
+  How to run: 1. Change the user_name(line 59) in the Recommend_by_User.py script
+  
+2. Recommend_by_time
+  This script recommend resturants to the input user by input time.
+  How to run: 1. Change the time(line 23) in the Recommend_by_time.py script
